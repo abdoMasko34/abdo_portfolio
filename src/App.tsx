@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import HomePage from "./features/home/index";
+import AboutPage from "./features/about/index";
+import SkillPage from "./features/skills/index";
+import ContactPage from "./features/contact/index";
+
+const pages = [
+  {
+    name: "home",
+    content: <HomePage />,
+  },
+  {
+    name: "about",
+    content: <AboutPage />,
+  },
+  {
+    name: "skill",
+    content: <SkillPage />,
+  },
+  {
+    name: "contact",
+    content: <ContactPage />,
+  },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {pages.map(({ name, content }) => {
+        return <div key={name}>{content}</div>;
+      })}
+    </>
   );
 }
 

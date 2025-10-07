@@ -1,0 +1,66 @@
+.cube {
+  --width: 50px;
+  --height: 50px;
+  --depth: 50px;
+  --primaryColor: #f5d3c4;
+  --secondaryColor: #f2aebb;
+  --thirdlyColor: #f1dade;
+  --borderColor: #c5a9ae;
+  height: var(--height);
+  width: var(--width);
+  position: relative;
+  transform: rotateX(149deg) rotateY(52deg);
+  transform-style: preserve-3d;
+}
+
+.face {
+  background-color: var(--primaryColor);
+  border: 1px solid var(--borderColor);
+  position: absolute;
+}
+.face:nth-of-type(1),
+.face:nth-of-type(2) {
+  /* background-color: rgb(91, 81, 216, 0.9); */
+  --coefficient: -0.5;
+  height: var(--height);
+  width: var(--width);
+  transform: translate3d(0, 0, calc(var(--depth) * var(--coefficient)));
+}
+.face:nth-of-type(1) {
+  background-color: var(--secondaryColor);
+}
+.face:nth-of-type(2) {
+  --coefficient: 0.5;
+}
+.face:nth-of-type(3),
+.face:nth-of-type(4) {
+  /* background-color: rgb(91, 81, 216, 0.7); */
+  --rotation: 90deg;
+  height: var(--height);
+  width: var(--depth);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotateY(var(--rotation))
+    translate3d(0, 0, calc(var(--width) * -0.5));
+}
+.face:nth-of-type(3) {
+  background-color: var(--primaryColor);
+}
+.face:nth-of-type(4) {
+  --rotation: -90deg;
+}
+
+.face:nth-of-type(5),
+.face:nth-of-type(6) {
+  --rotation: -90deg;
+  height: var(--depth);
+  width: var(--width);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotateX(var(--rotation))
+    translate3d(0, 0, calc(var(--height) * -0.5));
+}
+.face:nth-of-type(6) {
+  background-color: var(--thirdlyColor);
+  --rotation: 90deg;
+}
